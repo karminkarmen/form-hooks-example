@@ -1,18 +1,19 @@
 import * as yup from "yup";
 import { validationPatterns, validationMessages } from './constants';
+import {FIELDS} from "./types";
 
 const { nameValidationMessages, emailValidationMessages, passwordValidationMessages } = validationMessages;
 
 export const schema = yup.object({
-    name: yup
+    [FIELDS.NAME]: yup
         .string()
         .required(nameValidationMessages.required)
         .min(3, nameValidationMessages.min),
-    email: yup
+    [FIELDS.EMAIL]: yup
         .string()
         .required(emailValidationMessages.required)
         .email(emailValidationMessages.email),
-    password: yup
+    [FIELDS.PASSWORD]: yup
         .string()
         .required(passwordValidationMessages.required)
         .min(8, passwordValidationMessages.min)
