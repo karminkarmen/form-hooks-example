@@ -23,6 +23,7 @@ const NonIntegratedFormSchema = () => {
 
     const formValues = getValues();
     const passwordValidationMessages = errors.password?.types?.matches as string[];
+    const passwordMinMessage = errors.password?.types?.min;
 
     console.log({name: watch("name"), formState, formValues})
 
@@ -58,12 +59,20 @@ const NonIntegratedFormSchema = () => {
                 id={FIELDS.PASSWORD}
                 {...register(FIELDS.PASSWORD)} />
             <span>{errors.password?.message}</span>
-            {passwordValidationMessages && (
+            {(
                 <>
-                    <p>Your password has to include:</p>
-                    <ul>
-                        {passwordValidationMessages.map((info: string) => <li>{info}</li>)}
-                    </ul>
+                    {passwordMinMessage}
+                    {passwordValidationMessages && (
+                        <>
+                            <p>Your password has to include:</p>
+                            <ul>
+                                {Array.isArray(passwordValidationMessages)
+                                    ? passwordValidationMessages.map((info: string) => <li>{info}</li>)
+                                    : <li>{passwordValidationMessages}</li>
+                                }
+                            </ul>
+                        </>
+                    )}
                 </>
             )}
             <label htmlFor={FIELDS.HOBBIES}>Hobbies</label>

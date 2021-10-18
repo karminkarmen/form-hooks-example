@@ -1,9 +1,9 @@
 import React from "react";
-import NonIntegratedFormSchema from "./form/NonIntegratedFormSchema";
+import IntegratedMUIFormSchema from "./form/IntegratedMUIFormSchema";
 import './App.css';
 
 export default function App() {
     return (
-        <NonIntegratedFormSchema />
+        <IntegratedMUIFormSchema />
     );
 }

@@ -12,7 +12,7 @@ export enum FIELDS {
     BIRTHDAY = 'birthday',
     PASSWORD = 'password',
     HOBBIES = 'hobbies',
-    ABOUT = 'about'
+    ABOUT = 'about',
 }
 
 export interface IFormInputs {
